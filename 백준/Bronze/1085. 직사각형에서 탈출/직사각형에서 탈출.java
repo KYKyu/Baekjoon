@@ -13,7 +13,7 @@ public class Main {
         
 		int[] arr = {x,w-x,y,h-y};
 		int min = x;
-		for(int i=0;i<4;i++) {
+		for(int i=0;i<arr.length;i++) {
 			if(min > arr[i]) {
 				min = arr[i];
 			}
