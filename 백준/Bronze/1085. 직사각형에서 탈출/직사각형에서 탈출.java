@@ -4,13 +4,13 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		int[] array = new int[4];
 		for(int i = 0; i < 4; i++) {
 			array[i] = Integer.parseInt(st.nextToken());
 		}
+
 		array[2] = array[2] - array[0];
 		array[3] = array[3] - array[1];
 		int min = array[0];
@@ -18,11 +18,9 @@ public class Main {
 			if(array[i] < min)
 				min = array[i];
 		}
-		bw.write(min + "");
-		bw.flush();
-		bw.close();
-		br.close();
-				
+
+		System.out.println(min);
+		br.close();				
 	}
 
 }
