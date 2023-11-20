@@ -12,7 +12,7 @@ public class Main {
 		
 		if(N < 100) {
 			System.out.println(N);
-			System.exit(0);
+			return;
 		}
 		
 		for(int i = 1; i < 10; i++) {
