@@ -1,12 +1,15 @@
 import java.io.*;
 public class Main {
+	static final int M = 1234567891;
 	
 	public static long Hash(String str, int len) {
 		long sum = 0;
+		long pow = 1;
 		for(int i = 0; i < len; i++) {
-			sum += (long)((int)(str.charAt(i) - 96) * Math.pow(31, i));
+			sum = (sum + (long)((long)(str.charAt(i) - 96) * pow)) % M;
+			pow = pow * 31 % M;
 		}
-		return sum % 1234567891;
+		return sum;
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -18,6 +21,8 @@ public class Main {
 		long sum = Hash(str, len);
 		
 		System.out.println(sum);
+		br.close();
+		return;
 
 	}
 
