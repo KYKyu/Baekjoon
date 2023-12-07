@@ -29,12 +29,7 @@ public class Main {
 		
 		for(int i = 0; i < M; i++) {
 			key = Integer.parseInt(st.nextToken());
-			if(hm.containsKey(key)) {
-				bw.write(hm.get(key) + " ");
-			}
-			else {
-				bw.write(0 + " ");
-			}
+			bw.write(hm.getOrDefault(key, 0) + " ");
 		}
 		
 		bw.flush();
