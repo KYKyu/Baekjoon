@@ -20,7 +20,12 @@ public class Main {
 			for(int j = i+1; j < N-1; j++) {
 				for(int k = j+1; k < N; k++) {
 					int sum = cards[i] + cards[j] + cards[k];
-					if((M - near) > (M - sum) && (M - sum) >= 0) {
+					if(sum == M) {
+						System.out.println(sum);
+						br.close();
+						return;
+					}
+					if((sum - near > 0) && M >= sum) {
 						near = sum;
 					}
 				}
