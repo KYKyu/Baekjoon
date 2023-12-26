@@ -14,7 +14,7 @@ public class Main {
 		}
 		
 		for(int i = 0; i < 26; i++) {
-			sb.append(a[i] + " ");
+			sb.append(a[i]).append(" ");
 		}
 		System.out.println(sb);
 		return;
