@@ -29,8 +29,8 @@ public class Main {
         }
         while (K > 0) {
             if (K >= arr[mid]) {
-                K -= arr[mid];
-                result++;
+                result += K / arr[mid];
+                K %= arr[mid];
             } else {
                 mid--;
             }
