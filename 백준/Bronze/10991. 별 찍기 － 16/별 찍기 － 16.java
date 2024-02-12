@@ -1,0 +1,27 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        int N = Integer.parseInt(br.readLine());
+
+
+        for (int i = 0; i < N; i++) {
+            int star = N - i - 1;
+            for (int j = 0; j < N + i; j++) {
+                if (j == star) {
+                    sb.append("*");
+                    star += 2;
+                } else {
+                    sb.append(" ");
+                }
+            }
+            sb.append("\n");
+        }
+
+        System.out.println(sb);
+        br.close();
+    }
+}
