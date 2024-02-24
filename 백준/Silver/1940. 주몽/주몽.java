@@ -25,12 +25,6 @@ public class Main {
         }
 
         for (int i = 0; i < N; i++) {
-            if (hm.get(arr[i]) == M) {
-                int a = hm.get(arr[i]) - 1;
-                hm.put(arr[i], a);
-                count++;
-                continue;
-            }
             if (hm.get(arr[i]) > 0 && hm.containsKey(M - arr[i]) && hm.get(M - arr[i]) > 0 && arr[i] != M - arr[i]) {
                 int a = hm.get(arr[i]) - 1;
                 int b = hm.get(M - arr[i]) - 1;
