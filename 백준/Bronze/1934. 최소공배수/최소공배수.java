@@ -1,54 +1,32 @@
 import java.io.*;
-import java.util.*;
+import java.util.StringTokenizer;
+
 public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
-	public static void main(String[] args) throws IOException {
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		ArrayList<Integer> array = new ArrayList<>();
-		int T = Integer.parseInt(br.readLine());
-		for(int i = 0; i < T; i++) {
-			
-			st = new StringTokenizer(br.readLine());
-			int a = Integer.parseInt(st.nextToken()),
-					b = Integer.parseInt(st.nextToken());
-			int min;
-			if(a > b)
-				min = b;
-			else
-				min = a;
-			
-			int div = 2;
-			while(true) {
-				if(a > b)
-					min = b;
-				else
-					min = a;
-				if(min < div) {
-					array.add(a);
-					array.add(b);
-					break;
-				}
-				if((a % div == 0) && (b % div == 0)) {
-					a /= div;
-					b /= div;
-					array.add(div);
-				}
-				else
-					div++;
-			}
-			int mul = 1;
-			for(int j = 0; j < array.size(); j++) {
-				mul *= array.get(j);
-			}
-			bw.write(mul + "\n");
-			array.clear();
-		}
-		bw.flush();
-		bw.close();
-		br.close();
+        int T = Integer.parseInt(br.readLine());
+        while (T-- > 0) {
+            st = new StringTokenizer(br.readLine());
 
-	}
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
 
+            sb.append(lcm(a, b)).append("\n");
+        }
+
+        System.out.println(sb);
+        br.close();
+    }
+
+    static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+
+    static int lcm(int a, int b) {
+        return a * b / gcd(a, b);
+    }
 }
