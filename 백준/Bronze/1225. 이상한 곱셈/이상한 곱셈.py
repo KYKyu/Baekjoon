@@ -5,12 +5,12 @@ A, B = sys.stdin.readline().split()
 lenA = len(A)
 lenB = len(B)
 
-sum = 0
-result = 0
+sumA = 0
 for i in range(lenA):
-    sum += int(A[i])
+    sumA += int(A[i])
 
+sumB = 0
 for i in range(lenB):
-    result += sum * int(B[i])
+    sumB += int(B[i])
 
-print(result)
+print(sumA * sumB)
