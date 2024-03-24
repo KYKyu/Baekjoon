@@ -5,26 +5,22 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        int[] arr = new int[N + 1];
-        arr[1] = 1;
+        int[] dp = new int[N + 1];
 
-        for (int i = 2; i <= N; i++) {
+        for (int i = 1; i <= N; i++) {
+            dp[i] = i;
             if ((int)Math.pow((int)Math.sqrt(i), 2) == i) {
-                arr[i] = 1;
+                dp[i] = 1;
                 continue;
             }
-
-            int min = 100000;
-            for (int j = 1; j <= i / 2; j++) {
-                int a = arr[i - j] + arr[j];
-                if (min > a) {
-                    min = a;
+            for (int j = 1; j * j <= i; j++) {
+                int a = dp[i - j * j] + 1;
+                if (dp[i] > a) {
+                    dp[i] = a;
                 }
             }
-
-            arr[i] = min;
         }
-        System.out.println(arr[N]);
+        System.out.println(dp[N]);
         br.close();
     }
 }
