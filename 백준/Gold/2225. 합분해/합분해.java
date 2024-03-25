@@ -21,9 +21,7 @@ public class Main {
 
         for (int i = 1; i < N + 1; i++) {
             for (int j = 2; j < K + 1; j++) {
-                for (int k = 0; k < i + 1; k++) {
-                    dp[i][j] = (dp[i][j] + dp[k][j - 1]) % mod;
-                }
+                dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % mod;
             }
         }
 
