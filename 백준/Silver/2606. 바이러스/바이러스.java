@@ -1,11 +1,14 @@
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class Main {
     static int count = 0;
     static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
     static boolean[] check;
+    static Queue<Integer> que = new ArrayDeque<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,7 +33,7 @@ public class Main {
         }
 
         int startComputer = 1;
-        dfs(startComputer);
+        bfs(startComputer);
         System.out.println(count - 1);
     }
 
@@ -45,5 +48,24 @@ public class Main {
             }
         }
 
+    }
+
+    static void bfs(int computer) {
+        check[computer] = true;
+        count++;
+        que.offer(computer);
+
+        while(!que.isEmpty()) {
+            int a = que.poll();
+
+            for (int i = 0; i < graph.get(a).size(); i++) {
+                int newComputer = graph.get(a).get(i);
+                if (!check[newComputer]) {
+                    count++;
+                    check[newComputer] = true;
+                    que.offer(newComputer);
+                }
+            }
+        }
     }
 }
